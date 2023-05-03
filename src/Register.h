@@ -1,17 +1,21 @@
 #ifndef FILE_ORIENTED_REGISTER_H
 #define FILE_ORIENTED_REGISTER_H
 
+enum class R_Type{
+    R1,R2,R3,R4,PC,LF
+};
+
 class Register {
 public:
-    [[nodiscard]] int get_id () const { return id; };
+    [[nodiscard]] R_Type get_id () const { return id; };
 
-    [[nodiscard]] long long read_data () const { return data; };
+    [[nodiscard]] int read_data () const { return data; };
 
-    void write_data (const long long x) { data = x; };
+    void write_data (const int x) { data = x; };
 
 private:
-    int id;
-    long long data;
+    R_Type id;
+    int data;
 };
 
 

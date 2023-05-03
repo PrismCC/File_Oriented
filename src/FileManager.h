@@ -11,11 +11,17 @@ class FileManager {
 public:
     explicit FileManager (std::string &pro_name);
 
-    ~FileManager();
+    ~FileManager ();
 
-    bool find_Neo (const fs::path &scan_path);
+    static fs::path find_Neo (const fs::path &scan_path);
 
     static void test ();
+
+    static std::list<std::string> return_list (const fs::path &directory, bool need_files = true);
+
+    inline fs::path Neo_path ();
+
+    static const fs::path play_path;
 
 private:
     static void print_folder (const fs::path &scan_path, int tab = 0);
@@ -30,19 +36,14 @@ private:
 
     static inline void create_directory (const fs::path &directory);
 
-    static inline void copy_directory (const fs::path &from,const fs::path &to);
+    static inline void copy_directory (const fs::path &from, const fs::path &to);
 
     static inline void delete_directory (const fs::path &directory);
-
-    static std::list<std::string> code_list(const fs::path &directory);
-
-    inline fs::path Neo_path();
 
     inline void move_Neo (const std::string &func_name);
 
     inline void create_function (const std::string &func_name);
 
-    static const fs::path play_path;
     static std::ofstream fout;
     std::string program_name;
     fs::path main_path;
